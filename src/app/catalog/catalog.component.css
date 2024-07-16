@@ -12,6 +12,11 @@
   .filters button {
     width: 100px;
   }
+
+  .totalProducts{
+    margin: 0 100px 10px 100px;
+
+  }
   
   .products {
     margin: 0 100px;
@@ -72,4 +77,9 @@
   .product .price button {
     padding: 10px;
     width: 100px;
+  }
+
+  .discount{
+    margin-top: -15px;
+    color: red;
   }

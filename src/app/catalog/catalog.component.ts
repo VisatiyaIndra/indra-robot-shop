@@ -8,6 +8,8 @@ import { IProduct } from './product.model';
 })
 export class CatalogComponent {
   products: IProduct[];
+  totalProducts: number = 0;
+  filter: string = 'All';
 
   constructor(){
     this.products = [
@@ -184,10 +186,17 @@ export class CatalogComponent {
         price: 700.5,
         discount: 0,
       },
-    ];
+    ];    
   }
 
   getImageUrl(product: IProduct): string{
+    if (!product) return '';
     return `assets/images/robot-parts/${product.imageName}`;
+  }
+
+  getFilteredProducts(): IProduct[]{        
+    return this.filter === 'All' 
+    ? this.products
+    : this.products.filter((product) => product != null && product.category === this.filter);;
   }
 }
