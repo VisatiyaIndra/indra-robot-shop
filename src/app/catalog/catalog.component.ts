@@ -189,6 +189,12 @@ export class CatalogComponent {
     ];    
   }
 
+  getStrikeThorughClasses(product: IProduct): string[] {
+    let classes = [];
+    if (product.discount > 0) classes.push('strikethrough');
+    return classes;
+  }
+
   getImageUrl(product: IProduct): string{
     if (!product) return '';
     return `assets/images/robot-parts/${product.imageName}`;
