@@ -10,7 +10,10 @@
     <!-- <span class="totalProducts">Total {{ filter }} Products: {{ totalProducts }}</span> -->
     <ul class="products">
       <li class="product-item" *ngFor="let product of getFilteredProducts()">
-        <bot-product-details [product]="product" (buy)="addToCart(product)"></bot-product-details>
+        <bot-product-details 
+          [product]="product" 
+          (buy)="addToCart(product)">
+        </bot-product-details>
       </li>
     </ul>
   </div>
