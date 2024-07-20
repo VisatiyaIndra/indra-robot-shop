@@ -1,33 +1,16 @@
 <div class="container">
     <div class="filters">
+      <a class="button" (click)="filter='All'">All</a>
       <a class="button" (click)="filter='Heads'">Heads</a>
       <a class="button" (click)="filter='Arms'">Arms</a>
       <a class="button" (click)="filter='Torsos'">Torsos</a>
       <a class="button" (click)="filter='Bases'">Bases</a>
-      <a class="button" (click)="filter='All'">All</a>
+      <a class="button clearance" (click)="filter='Clearance'">Clearance</a>
     </div>
     <!-- <span class="totalProducts">Total {{ filter }} Products: {{ totalProducts }}</span> -->
     <ul class="products">
       <li class="product-item" *ngFor="let product of getFilteredProducts()">
-        <div class="product">
-          <div class="product-details">
-            <img [src]="getImageUrl(product)" [alt]="product?.name" />
-            <div class="product-info">
-              <div class="name red">{{ product?.name}}</div>
-              <div class="description">{{ product?.description }}</div>
-              <div class="category">Part Type: {{ product?.category}}</div>
-            </div>
-          </div>
-          <div class="price">
-            <div [ngClass]="getStrikeThorughClasses(product)">
-              {{ product.price | currency }}
-            </div>
-            <div *ngIf="product.discount > 0" class="discount">
-              {{ (product.price * (1 - product.discount)) | currency }}
-            </div>
-            <button class="cta">Buy</button>
-          </div>
-        </div>
+        <bot-product-details [product]="product" (buy)="addToCart(product)"></bot-product-details>
       </li>
     </ul>
   </div>

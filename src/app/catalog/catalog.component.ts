@@ -10,6 +10,7 @@ export class CatalogComponent {
   products: IProduct[];
   totalProducts: number = 0;
   filter: string = 'All';
+  cart: IProduct[] = [];
 
   constructor(){
     this.products = [
@@ -189,20 +190,19 @@ export class CatalogComponent {
     ];    
   }
 
-  getStrikeThorughClasses(product: IProduct): string[] {
-    let classes = [];
-    if (product.discount > 0) classes.push('strikethrough');
-    return classes;
+  addToCart(product: IProduct) {
+    this.cart.push(product);
+    console.log(`Product added to cart: ${product.name}`);
   }
 
-  getImageUrl(product: IProduct): string{
-    if (!product) return '';
-    return `assets/images/robot-parts/${product.imageName}`;
-  }
-
-  getFilteredProducts(): IProduct[]{        
-    return this.filter === 'All' 
-    ? this.products
-    : this.products.filter((product) => product != null && product.category === this.filter);;
+  getFilteredProducts(): IProduct[]{
+    if (this.filter === 'All') {
+      return this.products;
+    }else if(this.filter === 'Clearance') {
+      return this.products.filter((product) => product != null && product.discount > 0);
+    }
+    else {
+      return this.products.filter((product) => product != null && product.category === this.filter);
+    }
   }
 }
