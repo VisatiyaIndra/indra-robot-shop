@@ -9,6 +9,7 @@ import { ProductService } from '../services/product/product.service';
   styleUrls: ['./catalog.component.css']
 })
 export class CatalogComponent { 
+  products: IProduct[] = [];
   totalProducts: number = 0;
   filter: string = 'All';
   
@@ -17,12 +18,30 @@ export class CatalogComponent {
     this.productService = productService;       
   }
 
+  ngOnInit() {
+    this.getProductsFrmService();
+  }
+
+  getProductsFrmService() {
+    this.productService.getProducts().subscribe((products) => {
+      this.products = products;
+      this.totalProducts = products.length;
+    });
+  }
+
   addToCart(product: IProduct) {
     this.cartService.add(product);
   }
 
   getFilteredProducts(): IProduct[]{
-    return this.productService.getProducts(this.filter);
+    if (this.filter === 'All') {
+      return this.products;
+    }else if(this.filter === 'Clearance') {
+      return this.products.filter((product) => product != null && product.discount > 0);
+    }
+    else {
+      return this.products.filter((product) => product != null && product.category === this.filter);
+    }
   }
 
 }
