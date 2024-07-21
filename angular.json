@@ -63,7 +63,8 @@
               "browserTarget": "indra-robot-shop:build:production"
             },
             "development": {
-              "browserTarget": "indra-robot-shop:build:development"
+              "browserTarget": "indra-robot-shop:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
