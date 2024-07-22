@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <h1 class="header">Your Cart</h1>
 
   <div class="empty-cart" *ngIf="cartItems.length === 0">
@@ -16,7 +16,7 @@
           </div>
         </div>
         <div class="price">
-          <div [ngClass]="{ strikethrough: product.discount > 0 }">
+          <div ngClass="{ strikethrough: product.discount > 0 }">
             {{ product.price | currency : "USD" }}
           </div>
           <div *ngIf="product.discount > 0" class="discount">
@@ -28,4 +28,4 @@
     </li>
   </ul>
   <div class="total">Total: {{ cartTotal | currency }}</div>
-</div>
+</div> -->
