@@ -2,6 +2,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 
 const app = express();
+const port = 8081;
+
 app.use(bodyParser.json());
 /* 
   IMPORTANT:
@@ -250,4 +252,4 @@ app.post("/api/sign-in", (req, res) => {
   }
 });
 
-app.listen(8081, () => console.log("API Server listening on port 8081!"));
+app.listen(port, () => console.log("API Server listening on port 8081!"));
