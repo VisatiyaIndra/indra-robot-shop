@@ -24,8 +24,8 @@ export class CatalogComponent {
 
   ngOnInit() {
     this.getProductsFrmService();
-    this.route.params.subscribe((params) => {
-      this.filter = params['filter'] ?? this.filter;
+    this.route.queryParams.subscribe((params) => {
+      this.filter = params['filter'] ?? "";
     })
   }
 
